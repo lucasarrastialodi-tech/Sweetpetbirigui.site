@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sweet Pet - Galeria de Fotos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="icon" href="images/logo_sweet.png" type="image/png" />
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <h1>
+          <a href="index.html" class="logo-link">
+            <img src="images/logo_sweet.png" alt="Logo Sweet Pet" class="logo" />
+            <span class="site-title-text">Sweet Pet</span>
+          </a>
+        </h1>
+        <nav>
+          <a href="index.html">Início</a>
+          <a href="servicos.html">Serviços</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="processo.html">Nosso Processo</a>
+          <a href="galeria.html">Galeria</a>
+          <a href="dicas.html">Dicas</a>
+          <a href="faq.html">Duvidas Frequentes</a>
+          <a href="contato.html">Contato</a>
+          <a href="agendamento.html">Agendamento</a>
+        </nav>
+        <button class="hamburger-menu" aria-label="Abrir menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <section id="galeria" class="galeria">
+      <h2>Momentos Fofos 🐕🐩</h2>
+      <div class="fotos" id="galeria-dinamica"></div>
+    </section>
+
+    <footer>
+      <p class="enfase-footer">Um espaço seguro e 100% livre de gaiolas para o bem-estar do seu melhor amigo.</p>
+      <p>© 2025 Sweet Pet - Banho & Tosa com amor 🐾</p>
+    </footer>
+
+    <!-- Modal para visualização de imagem -->
+    <div id="image-modal" class="image-modal">
+      <span class="close-button">&times;</span>
+      <img class="modal-content" id="modal-image" />
+      <a class="prev-image-btn">&#10094;</a> <!-- Left arrow -->
+      <a class="next-image-btn">&#10095;</a> <!-- Right arrow -->
+    </div>
+
+    <script src="script/script.js"></script>
+  </body>
+</html>

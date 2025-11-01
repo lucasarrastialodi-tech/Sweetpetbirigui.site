@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sweet Pet - Nossos Serviços</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="icon" href="images/logo_sweet.png" type="image/png" />
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <h1>
+          <a href="index.html" class="logo-link">
+            <img src="images/logo_sweet.png" alt="Logo Sweet Pet" class="logo" />
+            <span class="site-title-text">Sweet Pet</span>
+          </a>
+        </h1>
+        <nav>
+          <a href="index.html">Início</a>
+          <a href="servicos.html">Serviços</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="processo.html">Nosso Processo</a>
+          <a href="galeria.html">Galeria</a>
+          <a href="dicas.html">Dicas</a>
+          <a href="faq.html">Duvidas Frequentes</a>
+          <a href="contato.html">Contato</a>
+          <a href="agendamento.html">Agendamento</a>
+        </nav>
+        <button class="hamburger-menu" aria-label="Abrir menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <section id="servicos" class="servicos">
+      <h2>Nossos Serviços</h2>
+      <p class="subtitulo-servicos">Cuidado, carinho e nada de gaiolas. Seu pet sempre livre!</p>
+      <div class="cards">
+        <div class="card">
+          <img src="images/banho.png" alt="Cachorro tomando banho" loading="lazy" width="280" height="200" />
+          <div class="card-content">
+            <h3>Banho</h3>
+            <p>Banho relaxante com produtos especiais e muito carinho.</p>
+          </div>
+          <div class="selo-sem-gaiola">🐾 Sem Gaiolas</div>
+        </div>
+        <div class="card">
+          <img src="images/Screenshot_1.png" alt="Cachorro sendo tosado" loading="lazy" width="280" height="200" />
+          <div class="card-content">
+            <h3>Tosa</h3>
+            <p>Tosa higiênica, na tesoura ou completa, conforme a raça e o estilo do seu pet.</p>
+          </div>
+          <div class="selo-sem-gaiola">🐾 Sem Gaiolas</div>
+        </div>
+        <div class="card">
+          <img src="images/spitiz.png" alt="Cachorro com penteado estiloso" loading="lazy" width="280" height="200" />
+          <div class="card-content">
+            <h3>Estética</h3>
+            <p>Hidratação, penteados e cuidados de beleza para deixar seu pet irresistível.</p>
+          </div>
+          <div class="selo-sem-gaiola">🐾 Sem Gaiolas</div>
+        </div>
+        <div class="card">
+          <img src="images/cortedeunha.png" alt="Corte de unhas de pet" loading="lazy" width="280" height="200" />
+          <div class="card-content">
+            <h3>Corte de Unhas</h3>
+            <p>Corte cuidadoso para garantir o conforto e a saúde das patinhas do seu amigo.</p>
+          </div>
+          <div class="selo-sem-gaiola">🐾 Sem Gaiolas</div>
+        </div>
+        <div class="card">
+          <img src="images/doglimpandoouvido.png" alt="Limpeza de ouvidos de pet" loading="lazy" width="280" height="200" />
+          <div class="card-content">
+            <h3>Limpeza de Ouvidos</h3>
+            <p>Limpeza delicada para prevenir infecções e manter a saúde auditiva do seu pet.</p>
+          </div>
+          <div class="selo-sem-gaiola">🐾 Sem Gaiolas</div>
+        </div>
+        <div class="card">
+          <img src="images/hidratacao.png" alt="Hidratação de pelo de pet" loading="lazy" width="280" height="200" />
+          <div class="card-content">
+            <h3>Hidratação de Pelo</h3>
+            <p>Tratamentos de hidratação profunda para um pelo macio, brilhante e saudável.</p>
+          </div>
+          <div class="selo-sem-gaiola">🐾 Sem Gaiolas</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p class="enfase-footer">Um espaço seguro e 100% livre de gaiolas para o bem-estar do seu melhor amigo.</p>
+      <p>© 2025 Sweet Pet - Banho & Tosa com amor 🐾</p>
+    </footer>
+
+    <!-- Modal para informações do serviço -->
+    <div id="service-info-modal" class="service-modal">
+      <div class="service-modal-content">
+        <span class="service-close-button">&times;</span>
+        <h3 id="service-modal-title"></h3>
+        <p id="service-modal-description"></p>
+      </div>
+    </div>
+
+    <script src="script/script.js"></script>
+  </body>
+</html>

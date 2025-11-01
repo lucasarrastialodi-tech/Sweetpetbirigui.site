@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sweet Pet - Agendamento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="icon" href="images/logo_sweet.png" type="image/png" />
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <h1>
+          <a href="index.html" class="logo-link">
+            <img src="images/logo_sweet.png" alt="Logo Sweet Pet" class="logo" />
+            <span class="site-title-text">Sweet Pet</span>
+          </a>
+        </h1>
+        <nav>
+          <a href="index.html">Início</a>
+          <a href="servicos.html">Serviços</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="processo.html">Nosso Processo</a>
+          <a href="galeria.html">Galeria</a>
+          <a href="dicas.html">Dicas</a>
+          <a href="faq.html">Duvidas Frequentes</a>
+          <a href="contato.html">Contato</a>
+          <a href="agendamento.html">Agendamento</a>
+        </nav>
+        <button class="hamburger-menu" aria-label="Abrir menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <section id="agendamento" class="agendamento">
+      <div class="container">
+        <h2>Agende um Horário para seu Pet</h2>
+        <p class="subtitulo-processo">Preencha os dados abaixo e envie para nós no WhatsApp. Entraremos em contato para confirmar a data e o horário!</p>
+        <form id="form-agendamento">
+          <div class="form-group">
+            <label for="nome-tutor">Seu Nome:</label>
+            <input type="text" id="nome-tutor" name="nome-tutor" required />
+          </div>
+          <div class="form-group">
+            <label for="telefone">Seu Telefone (WhatsApp):</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" required />
+          </div>
+          <div class="form-group">
+            <label for="nome-pet">Nome do Pet:</label>
+            <input type="text" id="nome-pet" name="nome-pet" required />
+          </div>
+          <div class="form-group">
+            <label for="raca-pet">Raça:</label>
+            <input type="text" id="raca-pet" name="raca-pet" required />
+          </div>
+          <div class="form-group">
+            <label for="peso-pet">Peso (aproximado em kg):</label>
+            <input type="text" id="peso-pet" name="peso-pet" />
+          </div>
+          <div class="form-group">
+            <label for="servico">Serviço Desejado:</label>
+            <select id="servico" name="servico" required>
+              <option value="" disabled selected>Selecione um serviço</option>
+              <option value="Banho">Banho</option>
+              <option value="Tosa">Tosa</option>
+              <option value="Banho e Tosa">Banho e Tosa</option>
+              <option value="Estética">Estética</option>
+              <option value="Corte de Unhas">Corte de Unhas</option>
+              <option value="Limpeza de Ouvidos">Limpeza de Ouvidos</option>
+              <option value="Hidratação de Pelo">Hidratação de Pelo</option>
+            </select>
+          </div>
+          <button type="submit" class="botao">Enviar Agendamento via WhatsApp</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p class="enfase-footer">Um espaço seguro e 100% livre de gaiolas para o bem-estar do seu melhor amigo.</p>
+      <p>© 2025 Sweet Pet - Banho & Tosa com amor 🐾</p>
+    </footer>
+
+    <script src="script/script.js"></script>
+  </body>
+</html>
