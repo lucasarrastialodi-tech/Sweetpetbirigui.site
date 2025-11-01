@@ -1,0 +1,1018 @@
+/* Adiciona rolagem suave para links de âncora */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Geral */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding-top: 110px; /* Adiciona espaço no topo para o header fixo */
+  background-color: #fffaf0; /* Cor de fundo principal */
+  color: #333;
+  position: relative; /* Necessário para o pseudo-elemento de fundo */
+}
+
+/* Adiciona a imagem de fundo como uma camada semi-transparente */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/pet_elements_bg.png'); /* Caminho para a imagem */
+  background-repeat: repeat;
+  background-size: 200px; /* Tamanho do padrão */
+  opacity: 0.1; /* Deixa a imagem sutil, como uma marca d'água */
+  z-index: -1; /* Coloca o fundo atrás de todo o conteúdo */
+}
+
+/* Header */
+header {
+  position: fixed; /* Deixa o header fixo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fe9fd1; /* Cor primária */
+  color: #444; /* Cor do texto no header */
+  padding: 15px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Sombra inicial */
+  z-index: 1000; /* Garante que fique sobre outros elementos */
+  transition: background-color 0.4s ease, box-shadow 0.4s ease; /* Animação suave */
+}
+
+.header-scrolled {
+  background-color: rgba(254, 159, 209, 0.8); /* Primária com um pouco mais de transparência */
+}
+
+header .container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+header h1 { /* Este estilo agora se aplica ao contêiner do logo e do nome */
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit; /* Mantém a cor do texto herdada */
+}
+
+.logo {
+  height: 80px; /* Ajuste a altura conforme necessário */
+  width: 80px; /* Garante que a forma seja um círculo */
+  margin-right: 10px; /* Espaço entre a logo e o texto */
+  border-radius: 50%; /* Deixa a imagem redonda */
+  object-fit: cover; /* Garante que a imagem preencha o círculo */
+  border: 3px solid white; /* Adiciona uma pequena borda branca */
+}
+
+.site-title-text {
+  font-family: "Pacifico", cursive;
+  font-size: 2.5rem; /* Aumenta o tamanho do nome */
+  white-space: nowrap; /* Evita que o título quebre em várias linhas */
+  /* Adiciona um pequeno espaço à esquerda para separar do logo */
+  margin-left: 10px;
+}
+
+header nav a {
+  color: #444; /* Cor dos links no menu */
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+/* Estilo para o link de navegação ativo (página atual) */
+header nav a.nav-link-active {
+  color: #c2185b; /* Rosa escuro do seu tema */
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Menu Hambúrguer (escondido em telas grandes) */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #444; /* Cor das barras do menu hambúrguer */
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hero */
+.hero {
+  padding: 60px 20px;
+  background-color: #fffaf0; /* Fundo claro e convidativo */
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  width: 90%;
+  margin: auto;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 500px;
+}
+
+.hero-text h1 {
+  font-size: 2.8rem;
+  color: #333;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.hero-image {
+  flex: 1;
+  max-width: 450px;
+  position: relative;
+}
+
+.hero-image img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-icon {
+  position: absolute;
+  font-size: 2.5rem;
+  background-color: white;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  animation: float 4s ease-in-out infinite;
+}
+
+.icon-1 {
+  top: -20px;
+  left: -30px;
+  animation-delay: 0s;
+}
+
+.icon-2 {
+  bottom: 60px;
+  left: -50px;
+  animation-delay: 1s;
+}
+
+.icon-3 {
+  bottom: -20px;
+  right: -20px;
+  animation-delay: 0.5s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.enfase-sem-gaiola {
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.botao {
+  background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 30px;
+  display: inline-block;
+  margin-top: 5px; /* Espaçamento ainda mais reduzido */
+  transition: transform 0.2s;
+}
+
+.botao:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 15px rgba(255, 126, 179, 0.4);
+}
+
+/* Serviços */
+.servicos {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.subtitulo-servicos {
+  font-size: 1.1rem;
+  color: #555;
+  margin-top: -15px;
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: flex; /* Muda para flexbox para criar a linha horizontal */
+  flex-wrap: wrap; /* Permite que os cards quebrem a linha no desktop */
+  justify-content: center; /* Centraliza os cards no desktop */
+  gap: 25px; /* Espaçamento padronizado */
+}
+
+.card.highlighted {
+  border: 2px solid #c2185b; /* Borda rosa escura */
+  box-shadow: 0 8px 20px rgba(255, 126, 179, 0.4); /* Sombra mais forte */
+  transform: translateY(-5px) scale(1.05); /* Efeito de destaque aumentado */
+  z-index: 1; /* Garante que o card destacado fique por cima */
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+  width: 280px; /* Largura fixa para proporção correta */
+}
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: 15px;
+  flex-grow: 1; /* Faz esta área crescer e empurrar o selo para baixo */
+  display: flex;
+  flex-direction: column;
+}
+
+.selo-sem-gaiola {
+  background-color: #fff5f7; /* Fundo rosa claro */
+  color: #c2185b; /* Rosa escuro para contraste */
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin: 0 15px 15px 15px;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.fotos {
+  display: flex; /* Muda para flexbox para criar a linha horizontal */
+  overflow-x: auto; /* Habilita o scroll horizontal */
+  gap: 15px;
+  margin-top: 20px;
+  padding-bottom: 15px; /* Espaço para a barra de rolagem não cobrir as fotos */
+  -webkit-overflow-scrolling: touch; /* Melhora a rolagem em dispositivos touch */
+}
+
+.fotos img {
+  width: 250px; /* Define uma largura fixa para cada imagem */
+  height: 250px; /* Define uma altura fixa para manter a proporção */
+  object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+  flex-shrink: 0; /* Impede que as imagens encolham */
+}
+
+.fotos img:hover {
+  transform: scale(1.05);
+}
+
+/* Estilização da barra de rolagem da galeria (para navegadores WebKit) */
+.fotos::-webkit-scrollbar {
+  height: 8px;
+}
+
+.fotos::-webkit-scrollbar-track {
+  background: #fff0f5; /* Cor de fundo da trilha da barra */
+  border-radius: 10px;
+}
+
+.fotos::-webkit-scrollbar-thumb {
+  background-color: #fe9fd1; /* Cor da barra de rolagem (cor primária) */
+  border-radius: 10px;
+}
+
+/* Sobre */
+.sobre {
+  padding: 60px 20px;
+  background-color: #fff;
+}
+
+.sobre .container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  max-width: 1000px; /* Limita a largura máxima do container */
+  width: 90%; /* Ajusta a largura para ser mais responsiva */
+  margin: auto;
+}
+
+.foto-proprietaria {
+  width: 220px; /* Reduz o tamanho da foto */
+  height: 220px; /* Reduz o tamanho da foto */
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(255, 92, 141, 0.25); /* Sombra rosa */
+  border: 5px solid #fe9fd1;
+}
+
+.sobre-texto {
+  flex: 1; /* Permite que o texto ocupe o espaço restante */
+}
+
+.sobre-texto h2 {
+  margin-top: 0;
+}
+
+.sobre-texto h3 {
+  color: #c2185b; /* Rosa escuro */
+  font-weight: 600;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+/* Processo */
+.processo {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.subtitulo-processo {
+  font-size: 1.1rem;
+  color: #555;
+  margin-top: -15px;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.processo-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 30px;
+}
+.processo-step {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 25px;
+  width: 220px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  flex-grow: 1;
+  max-width: 250px;
+}
+
+.processo-step.highlighted {
+  border: 2px solid #c2185b;
+  box-shadow: 0 8px 20px rgba(255, 126, 179, 0.4);
+  transform: translateY(-5px) scale(1.05);
+  z-index: 1;
+}
+
+/* Dicas */
+.dicas {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #fffaf0; /* Fundo claro para a seção */
+}
+
+.dicas-conteudo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px; /* Espaçamento padronizado */
+  margin-top: 40px;
+}
+
+.dica-card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 30px;
+  text-align: left;
+  transition: transform 0.2s;
+  display: flex; /* Adicionado para alinhar altura */
+  flex-direction: column; /* Adicionado para alinhar altura */
+  flex: 1; /* Permite que os cards cresçam proporcionalmente */
+  min-width: 300px; /* Largura mínima para evitar que fiquem muito pequenos */
+}
+
+.dica-card.highlighted {
+  border: 2px solid #c2185b;
+  box-shadow: 0 8px 20px rgba(255, 126, 179, 0.4);
+  transform: translateY(-5px) scale(1.05);
+  z-index: 1;
+}
+
+.dica-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.dica-card h3 {
+  color: #c2185b; /* Rosa escuro */
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.dica-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.dica-card ul li {
+  margin-bottom: 10px;
+}
+
+.dica-card-image {
+  width: 100%;
+  height: auto; /* Permite que a altura se ajuste proporcionalmente */
+  object-fit: contain; /* Garante que a imagem apareça inteira sem cortar */
+  border-radius: 10px;
+  margin: 15px 0; /* Adiciona margem em cima e embaixo */
+  background-color: #f0f0f0; /* Cor de fundo caso a imagem não carregue */
+}
+
+.link-externo {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 600;
+  color: #c2185b;
+}
+
+/* FAQ */
+.faq {
+  padding: 60px 20px;
+  background-color: #fff;
+}
+
+.faq h2 {
+  text-align: center;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 40px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.faq-item {
+  background-color: #fffaf0;
+  padding: 20px 25px;
+  border-radius: 15px; /* Cantos arredondados em todos os lados */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Sombra sutil para dar profundidade */
+}
+
+.faq-item h3 {
+  margin-top: 0;
+  color: #c2185b;
+}
+
+.step-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  line-height: 1;
+}
+
+/* Contato */
+.contato {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* Estilos para os links na seção de contato */
+.contato a {
+  color: #c2185b; /* Rosa escuro */
+}
+
+.contato a:hover {
+  text-decoration: underline;
+}
+
+/* Alinhamento do ícone de rede social no contato */
+.contato-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.contato-social svg {
+  stroke: #c2185b; /* Cor do ícone */
+}
+
+/* Footer */
+footer {
+  background-color: #fe9fd1;
+  color: #444;
+  text-align: center;
+  padding: 10px;
+  position: relative; /* Para o conteúdo ficar sobre as bolhas */
+}
+
+.enfase-footer {
+  font-weight: 500;
+  margin: 10px 0 15px 0;
+}
+
+/* Agendamento Form */
+.agendamento {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.agendamento .container {
+  max-width: 700px;
+  margin: auto;
+}
+
+#form-agendamento {
+  background-color: #fffaf0;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-top: 40px;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #c2185b; /* Rosa escuro */
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group select {
+  width: calc(100% - 20px); /* Ajusta para padding */
+  padding: 10px;
+  border: 1px solid #fe9fd1;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box; /* Inclui padding e border no width */
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #ff7eb3;
+  box-shadow: 0 0 5px rgba(255, 126, 179, 0.5);
+}
+
+/* Modal de Informações do Serviço */
+.service-modal { /* Escondido por padrão */
+  display: none;
+  position: fixed; /* Fica por cima de tudo */
+  z-index: 1003; /* Z-index alto para cobrir outros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Largura total */
+  height: 100%; /* Altura total */
+  overflow: auto; /* Habilita rolagem se o conteúdo for muito grande */
+  background-color: rgba(0, 0, 0, 0.8); /* Fundo preto semi-transparente */
+}
+
+.service-modal.show { /* Exibido quando a classe 'show' é adicionada */
+  display: flex; /* Para centralizar o conteúdo */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+}
+
+.service-modal-content {
+  background-color: #fffaf0; /* Fundo claro */
+  margin: auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  text-align: left;
+}
+
+/* Animação para o modal de serviço */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+.service-modal-title {
+  color: #c2185b; /* Rosa escuro */
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+.service-modal-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.service-close-button {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.service-close-button:hover,
+.service-close-button:focus {
+  color: #c2185b;
+  text-decoration: none;
+}
+
+/* Modal de Imagem */
+.image-modal {
+  display: none; /* Escondido por padrão */
+  position: fixed; /* Fica por cima de tudo */
+  z-index: 1002; /* Z-index alto para cobrir outros elementos */
+  padding-top: 60px; /* Posição do conteúdo do modal */
+  left: 0;
+  top: 0;
+  width: 100%; /* Largura total */
+  height: 100%; /* Altura total */
+  overflow: auto; /* Habilita rolagem se a imagem for muito grande */
+  background-color: rgba(0, 0, 0, 0.9); /* Fundo preto semi-transparente */
+}
+
+/* Conteúdo da imagem dentro do modal */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: auto; /* A largura se ajusta ao conteúdo */
+  height: auto; /* A altura se ajusta ao conteúdo */
+  max-width: 90vw; /* Largura máxima de 90% da tela */
+  max-height: 85vh; /* Altura máxima de 85% da tela */
+  object-fit: contain; /* Garante que a imagem caiba sem cortar */
+  border-radius: 10px;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+/* Animação de zoom para o modal */
+@keyframes zoom {
+  from {
+    transform: scale(0.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Botão de fechar */
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #bbb;
+  text-decoration: none;
+}
+
+/* Navigation buttons for image modal */
+.prev-image-btn, .next-image-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.next-image-btn {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev-image-btn {
+  left: 0;
+}
+
+.prev-image-btn:hover, .next-image-btn:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Seção de Alerta de Crime */
+.crime-alert {
+  background-color: #c2185b; /* Cor da faixa - ajustada para o rosa escuro do tema */
+  color: white;
+  padding: 25px 15px;
+  text-align: center;
+}
+/* Seção de Alerta de Crime */
+.crime-alert h3 {
+  margin-top: 0;
+  font-size: 1.6rem; /* Fonte ainda menor */
+}
+
+.crime-alert p {
+  max-width: 700px;
+  margin: 10px auto 15px auto; /* Margem inferior ainda mais reduzida */
+  line-height: 1.6;
+}
+
+.disque-denuncia {
+  background-color: white;
+  color: #c2185b;
+  border-radius: 10px;
+  padding: 10px 18px; /* Padding ainda mais reduzido */
+  display: inline-block;
+  font-size: 1.2rem; /* Fonte ainda menor */
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.service-modal { /* Escondido por padrão */
+  display: none;
+  position: fixed; /* Fica por cima de tudo */
+  z-index: 1003; /* Z-index alto para cobrir outros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Largura total */
+  height: 100%; /* Altura total */
+  overflow: auto; /* Habilita rolagem se o conteúdo for muito grande */
+  background-color: rgba(0, 0, 0, 0.8); /* Fundo preto semi-transparente */
+}
+
+.service-modal.show { /* Exibido quando a classe 'show' é adicionada */
+  display: flex; /* Para centralizar o conteúdo */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+}
+
+.service-modal-content {
+  background-color: #fffaf0; /* Fundo claro */
+  margin: auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  text-align: left;
+}
+
+/* Animação para o modal de serviço */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+.service-modal-title {
+  color: #c2185b; /* Rosa escuro */
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+.service-modal-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.disque-denuncia strong {
+  font-size: 1.6rem; /* Fonte ainda menor */
+}
+
+/* Responsividade para Dispositivos Móveis */
+@media (max-width: 768px) {
+  body {
+    padding-top: 80px; /* Ajusta o padding para o header menor */
+  }
+
+  /* Header */
+  header .container {
+    flex-wrap: wrap;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .logo {
+    height: 60px;
+    width: 60px;
+  }
+
+  /* Lógica do Menu Hambúrguer */
+  .hamburger-menu {
+    display: flex;
+  }
+
+  .hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    background-color: #fe9fd1;
+    padding: 20px 0;
+    margin-top: 15px;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  nav a {
+    margin: 10px 0;
+    font-size: 1.2rem;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 30px 15px;
+  }
+
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-image {
+    margin-top: 30px;
+    max-width: 300px;
+  }
+  .hero-icon {
+    font-size: 2rem;
+  }
+  
+  /* Ajustes para o título do header em mobile */
+  .site-title-text {
+    font-size: 1.8rem; /* Ajusta o tamanho do nome para mobile */
+  }
+
+  /* Títulos das seções */
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    width: 90%; /* Ocupa quase toda a largura da tela */
+  }
+
+  /* Sobre - Responsivo */
+  .sobre .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .foto-proprietaria {
+    width: 200px;
+    height: 200px;
+  }
+
+  /* Processo - Responsivo */
+  .processo-step {
+    width: 80%;
+  }
+
+  .dica-card {
+    max-width: 90%;
+  }
+
+  .faq-item {
+    padding: 15px 20px;
+  }
+
+  #form-agendamento {
+    padding: 20px;
+  }
+  .form-group input[type="text"],
+  .form-group input[type="tel"],
+  .form-group select {
+    width: 100%;
+  }
+
+  .service-modal-content {
+    padding: 20px;
+  }
+
+}
+
+  /* Responsive adjustments for image modal buttons */
+  .prev-image-btn, .next-image-btn {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .crime-alert h3 {
+    font-size: 1.5rem;
+  }
+
+  /* Ativa o modo carrossel para as seções em mobile */
+  .cards, .processo-container, .dicas-conteudo {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 15px; /* Espaço para a barra de rolagem */
+  }
+
+  .card, .processo-step, .dica-card {
+    flex-shrink: 0; /* Impede que os itens encolham */
+  }
+
+  .card {
+    width: 280px; /* Garante a largura correta no carrossel */
+  }
+
+  .processo-step {
+    width: 80%;
+  }
+
+  .dica-card {
+    width: 90%;
+  }
+
+  .crime-alert h3 {
+    font-size: 1.5rem;
+  }
+
+}
