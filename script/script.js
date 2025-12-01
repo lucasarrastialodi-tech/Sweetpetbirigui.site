@@ -12,11 +12,12 @@ const fotos = [
   { src: "images/IMG-20251027-WA0017.jpg", alt: "Cachorrinha sorrindo com laços na cabeça" },
   { src: "images/IMG-20251027-WA0016.jpg", alt: "Três cachorrinhos fantasiados" },
   { src: "images/IMG-20251024-WA0028.jpg", alt: "Cachorro Spitz Alemão com bandana de fogo" },
-  { src:"images/claudia1.jpg", alt:"mascote claudia" },  
-  { src:"images/princesa0111.jpg", alt:"princesa 01/11/2025" },  
-  { src:"images/claudia1.jpg", alt:"mascote claudia" },
-  { src:"images/claudia1.jpg", alt:"mascote claudia" },
-  { src:"images/claudia1.jpg", alt:"mascote claudia" },
+  { src: "images/claudia1.jpg", alt: "mascote claudia" },  
+  { src: "images/princesa0111.jpg", alt: "princesa 01/11/2025" },  
+  { src: "images/claudia1.jpg", alt: "mascote claudia" },
+  { src: "images/claudia1.jpg", alt: "mascote claudia" },
+  { src: "images/claudia1.jpg", alt: "mascote claudia" }
+]; // <--- O ERRO ESTAVA AQUI: Faltava fechar o array com ];
 
 const galeria = document.getElementById("galeria-dinamica");
 
