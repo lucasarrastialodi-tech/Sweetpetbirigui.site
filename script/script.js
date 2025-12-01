@@ -14,7 +14,7 @@ const fotos = [
   { src: "images/IMG-20251024-WA0028.jpg", alt: "Cachorro Spitz Alemão com bandana de fogo" },
   { src: "images/claudia1.jpg", alt: "mascote claudia" },  
   { src: "images/princesa0111.jpg", alt: "princesa 01/11/2025" },  
-  { src: "images/claudia1.jpg", alt: "mascote claudia" },
+  { src: "images/IMG-20251201-WA0017.jpg", alt: "branquela" },
   { src: "images/IMG-20251201-WA0019.jpg", alt: "boca de foca" },
   { src: "images/IMG-20251201-WA0021.jpg", alt: "vichy" }
 ]; // <--- O ERRO ESTAVA AQUI: Faltava fechar o array com ];
