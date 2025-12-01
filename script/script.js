@@ -14,7 +14,10 @@ const fotos = [
   { src: "images/IMG-20251024-WA0028.jpg", alt: "Cachorro Spitz Alemão com bandana de fogo" },
   { src:"images/claudia1.jpg", alt:"mascote claudia" },  
   { src:"images/princesa0111.jpg", alt:"princesa 01/11/2025" },  
-];
+
+  _{ src:"images/claudia1.jpg", alt:"mascote claudia" },
+  { src:"images/claudia1.jpg", alt:"mascote claudia" },
+  { src:"images/claudia1.jpg", alt:"mascote claudia" },
 
 const galeria = document.getElementById("galeria-dinamica");
 
