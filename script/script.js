@@ -22,7 +22,10 @@ const fotos = [
   { src: "images/IMG-20251201-WA0021.jpg", alt: "neguinha" },
   { src: "images/IMG_20251219_211242_336.jpg", alt: "cao" },
   { src: "images/IMG_20251220_185611_536.jpg", alt: "cao" },
-  { src: "images/IMG_20251213_200632_293.jpg", alt: "cao" }
+  { src: "images/IMG_20251213_200632_293.jpg", alt: "cao" },
+  { src: "images/IMG_20251226_120754.jpg", alt: "1" },
+  { src: "images/IMG_20251213_200632_293.jpg", alt: "2" },
+  { src: "images/IMG_20251213_200632_293.jpg", alt: "3" }
 ]; // <--- O ERRO ESTAVA AQUI: Faltava fechar o array com ];
 
 const galeria = document.getElementById("galeria-dinamica");
