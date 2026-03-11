@@ -26,11 +26,11 @@ const fotos = [
   { src: "images/IMG_20251226_120754.jpg", alt: "1" },
   { src: "images/IMG_20251222_084851.jpg", alt: "2" },
   { src: "images/IMG_20251224_093723.jpg", alt: "3" }
-]; // <--- O ERRO ESTAVA AQUI: Faltava fechar o array com ];
+];
 
 const galeria = document.getElementById("galeria-dinamica");
 
-// Service importance descriptions
+// Descrições de importância do serviço
 const serviceImportance = {
   "Banho": "O banho regular é essencial para a higiene, saúde da pele e pelo do seu pet, prevenindo doenças e mantendo-o cheiroso e feliz.",
   "Tosa": "A tosa é importante para manter a pelagem saudável, evitar nós, regular a temperatura corporal e garantir o conforto do seu pet, além de realçar sua beleza.",
@@ -40,21 +40,20 @@ const serviceImportance = {
   "Hidratação de Pelo": "A hidratação profunda nutre e fortalece o pelo, deixando-o macio, brilhante e menos propenso a nós, além de proteger a pele do seu pet."
 };
 
-// Modal elements
+// Elementos do Modal
 const imageModal = document.getElementById("image-modal");
 
-// Cria dinamicamente os elementos de imagem para a galeria e adiciona evento de clique
+// Cria dinamicamente a galeria
 if (galeria) {
   fotos.forEach((fotoInfo, index) => {
     const img = document.createElement("img");
     img.src = fotoInfo.src;
-    img.alt = fotoInfo.alt; // Usa a descrição específica para cada foto
-    img.loading = "lazy"; // Otimização: carrega a imagem apenas quando estiver perto de ser visível
-    img.width = "250"; // Otimização: define a largura para evitar layout shift
-    img.height = "250"; // Otimização: define a altura para evitar layout shift
+    img.alt = fotoInfo.alt;
+    img.loading = "lazy";
+    img.width = "250";
+    img.height = "250";
     galeria.appendChild(img);
 
-    // Adiciona evento de clique para abrir o modal
     img.addEventListener("click", () => {
       showImageInModal(index);
     });
@@ -70,11 +69,9 @@ if (imageModal) {
   let currentImageIndex = 0;
 
   function showImageInModal(index) {
-    if (index >= fotos.length) {
-      index = 0; // Volta para a primeira imagem
-    } else if (index < 0) {
-      index = fotos.length - 1; // Vai para a última imagem
-    }
+    if (index >= fotos.length) index = 0;
+    else if (index < 0) index = fotos.length - 1;
+    
     currentImageIndex = index;
     modalImage.src = fotos[currentImageIndex].src;
     modalImage.alt = fotos[currentImageIndex].alt;
@@ -88,27 +85,25 @@ if (imageModal) {
   }
 
   imageModal.addEventListener("click", (event) => {
-    if (event.target === imageModal) {
-      imageModal.style.display = "none";
-    }
+    if (event.target === imageModal) imageModal.style.display = "none";
   });
 
   if (prevImageBtn) {
     prevImageBtn.addEventListener("click", (e) => {
-      e.stopPropagation(); // Impede que o modal feche ao clicar no botão
+      e.stopPropagation();
       showImageInModal(currentImageIndex - 1);
     });
   }
 
   if (nextImageBtn) {
     nextImageBtn.addEventListener("click", (e) => {
-      e.stopPropagation(); // Impede que o modal feche ao clicar no botão
+      e.stopPropagation();
       showImageInModal(currentImageIndex + 1);
     });
   }
 }
 
-// Lógica para o modal de informações do serviço
+// Modal de informações do serviço
 const serviceInfoModal = document.getElementById("service-info-modal");
 if (serviceInfoModal) {
   const serviceModalTitle = serviceInfoModal.querySelector("#service-modal-title");
@@ -122,9 +117,7 @@ if (serviceInfoModal) {
   }
 
   window.addEventListener("click", (event) => {
-    if (event.target == serviceInfoModal) {
-      serviceInfoModal.style.display = "none";
-    }
+    if (event.target == serviceInfoModal) serviceInfoModal.style.display = "none";
   });
 
   const serviceCards = document.querySelectorAll("#servicos .card");
@@ -140,8 +133,7 @@ if (serviceInfoModal) {
   });
 }
 
-
-// Lógica para o menu hambúrguer
+// Menu hambúrguer
 const hamburger = document.querySelector(".hamburger-menu");
 const nav = document.querySelector("nav");
 
@@ -152,46 +144,38 @@ if (hamburger && nav) {
   });
 }
 
-// Lógica para header transparente ao rolar
+// Header transparente ao rolar
 const header = document.querySelector("header");
 if (header) {
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      header.classList.add("header-scrolled");
-    } else {
-      header.classList.remove("header-scrolled");
-    }
+    if (window.scrollY > 50) header.classList.add("header-scrolled");
+    else header.classList.remove("header-scrolled");
   });
 }
 
-// Lógica para o slideshow na seção hero
-// Certifique-se de que heroImg existe antes de tentar manipulá-lo
+// Slideshow Hero
 const heroImg = document.getElementById("hero-slideshow-img");
 if (heroImg) {
   let fotoAtualIndex = 0;
 
   function proximaFoto() {
-    // Incrementa o índice ou volta para o início
     fotoAtualIndex = (fotoAtualIndex + 1) % fotos.length;
-
-    // Adiciona um efeito de fade-out
     heroImg.style.opacity = 0;
 
     setTimeout(() => {
       heroImg.src = fotos[fotoAtualIndex].src;
       heroImg.alt = fotos[fotoAtualIndex].alt;
-      heroImg.style.opacity = 1; // Adiciona um efeito de fade-in
-    }, 500); // Tempo deve ser igual à transição do CSS
+      heroImg.style.opacity = 1;
+    }, 500);
   }
-
-  setInterval(proximaFoto, 4000); // Muda a foto a cada 4 segundos
+  setInterval(proximaFoto, 4000);
 }
 
-// Lógica para o formulário de agendamento (apenas se o formulário existir)
+// Lógica de Agendamento via WhatsApp
 const formAgendamento = document.getElementById("form-agendamento");
 if (formAgendamento) {
   formAgendamento.addEventListener("submit", function(event) {
-    event.preventDefault(); // Impede o envio padrão do formulário
+    event.preventDefault();
 
     const nomeTutor = document.getElementById("nome-tutor").value;
     const telefone = document.getElementById("telefone").value;
@@ -200,7 +184,8 @@ if (formAgendamento) {
     const pesoPet = document.getElementById("peso-pet").value;
     const servico = document.getElementById("servico").value;
 
-    const whatsappNumber = "551831753595"; // Seu número de WhatsApp
+    // NÚMERO ATUALIZADO ABAIXO
+    const whatsappNumber = "5518991817474"; 
 
     let message = `Olá, Sweet Pet! Gostaria de agendar um serviço.\n\n`;
     message += `*Dados do Tutor:*\n`;
@@ -209,37 +194,26 @@ if (formAgendamento) {
     message += `*Dados do Pet:*\n`;
     message += `Nome do Pet: ${nomePet}\n`;
     message += `Raça: ${racaPet}\n`;
-    if (pesoPet) {
-      message += `Peso: ${pesoPet} kg\n\n`;
-    } else {
-      message += `\n`;
-    }
+    message += pesoPet ? `Peso: ${pesoPet} kg\n\n` : `\n`;
     message += `*Serviço Desejado:*\n`;
     message += `${servico}\n\n`;
     message += `Por favor, aguardo a confirmação de data e horário.`;
 
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappLink, "_blank");
-
-    // Opcional: Limpar o formulário após o envio
     formAgendamento.reset();
   });
 }
 
-// Lógica para destacar o item de menu da página atual
+// Destacar item de menu ativo
 document.addEventListener('DOMContentLoaded', () => {
-  const currentPath = window.location.pathname.split('/').pop(); // Get filename from path
+  const currentPath = window.location.pathname.split('/').pop();
   const navLinks = document.querySelectorAll('header nav a');
 
   navLinks.forEach(link => {
-    const linkPath = link.getAttribute('href').split('/').pop(); // Get filename from link href
-
-    // Check if currentPath is empty (meaning it's index.html) or matches the linkPath
-    // If currentPath is empty, it means we are on index.html, so highlight the 'index.html' link
-    // Otherwise, highlight the link that matches the current page filename
+    const linkPath = link.getAttribute('href').split('/').pop();
     if ((currentPath === '' && linkPath === 'index.html') || (currentPath === 'index.html' && linkPath === 'index.html')) {
       link.classList.add('nav-link-active');
-    // For other pages, match the filename directly
     } else if (currentPath === linkPath) {
       link.classList.add('nav-link-active');
     }
