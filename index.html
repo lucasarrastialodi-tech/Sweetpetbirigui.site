@@ -11,7 +11,7 @@
     <link rel="icon" href="images/logo_sweet.png" type="image/png" />
     <script src="https://va.vercel-scripts.com/v1/script.js" defer></script>
     <style>
-      /* --- Otimizações para PC (Desktop) --- */
+      /* --- Otimizações extras para telas de PC (Desktop) --- */
       @media (min-width: 992px) {
         body {
           max-width: 1400px;
@@ -24,7 +24,6 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
-          position: relative;
         }
         .hero-container {
           max-width: 1200px;
@@ -51,6 +50,7 @@
           max-width: 1200px;
           margin: 0 auto;
         }
+        /* Contato em duas colunas no PC */
         .contato {
           max-width: 1100px;
           margin: 40px auto;
@@ -72,73 +72,6 @@
           min-height: 300px;
         }
       }
-
-      /* --- Correção Definitiva do Menu Lateral e Botão --- */
-      header .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-      }
-
-      .hamburger-menu {
-        display: flex !important;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 32px;
-        height: 24px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        z-index: 1002;
-      }
-
-      .hamburger-menu .bar {
-        width: 100%;
-        height: 3px;
-        background-color: #333;
-        border-radius: 2px;
-        transition: 0.3s ease;
-      }
-
-      /* Menu lateral forçado para garantir interatividade */
-      header nav#nav-menu-lateral {
-        position: fixed !important;
-        top: 0 !important;
-        right: -320px !important;
-        width: 280px !important;
-        height: 100vh !important;
-        background-color: #ffffff !important;
-        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.15) !important;
-        display: flex !important;
-        flex-direction: column !important;
-        padding: 90px 25px 30px 25px !important;
-        gap: 12px !important;
-        transition: right 0.35s cubic-bezier(0.77, 0, 0.175, 1) !important;
-        z-index: 1001 !important;
-        overflow-y: auto !important;
-      }
-
-      header nav#nav-menu-lateral.active {
-        right: 0 !important;
-      }
-
-      header nav#nav-menu-lateral a {
-        text-decoration: none !important;
-        color: #333 !important;
-        font-weight: 500 !important;
-        font-size: 1.1rem !important;
-        padding: 10px 15px !important;
-        border-radius: 8px !important;
-        display: block !important;
-        transition: background 0.2s, color 0.2s !important;
-      }
-
-      header nav#nav-menu-lateral a:hover {
-        background-color: #fff0f3 !important;
-        color: #ff6b81 !important;
-      }
     </style>
   </head>
 
@@ -151,9 +84,7 @@
             <span class="site-title-text">Sweet Pet</span>
           </a>
         </h1>
-        
-        <!-- Menu Lateral com todas as 9 abas originais -->
-        <nav id="nav-menu-lateral">
+        <nav>
           <a href="index.html">Início</a>
           <a href="servicos.html">Serviços</a>
           <a href="sobre.html">Sobre</a>
@@ -164,9 +95,7 @@
           <a href="contato.html">Contato</a>
           <a href="agendamento.html">Agendamento</a>
         </nav>
-
-        <!-- Botão dos 3 risquinhos -->
-        <button class="hamburger-menu" id="hamburger-btn" aria-label="Abrir menu">
+        <button class="hamburger-menu" aria-label="Abrir menu">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
@@ -422,7 +351,7 @@
       </div>
     </section>
 
-    <!-- Seção Contato -->
+    <!-- Seção Contato Otimizada para PC -->
     <section id="contato" class="contato">
       <div class="contato-info">
         <h2>Contato</h2>
@@ -439,7 +368,7 @@
 
       <div class="contato-mapa">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3714.4756312423985!2d-50.3540!3d-21.3100!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sR.+Jos%C3%A9+Scarpim%2C+331+-+Jardim+Recanto+dos+Passaros+Birigui+-+SP%2C+16201-150!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3714.4756312423985!2d-50.3540!3d-21.3100!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sR.+Jos%C3%A9+Scarpim%2C+331+-+Jardim+Recanto+dos+Passaros%2C+Birigui+-+SP%2C+16201-150!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
           width="100%"
           height="250"
           style="border:0; border-radius: 10px;"
@@ -480,33 +409,5 @@
     </div>
     
     <script src="script/script.js"></script>
-    <script>
-      // Script embutido ativando perfeitamente o menu hambúrguer por cima de qualquer regra externa
-      document.addEventListener('DOMContentLoaded', () => {
-        const btn = document.getElementById('hamburger-btn');
-        const nav = document.getElementById('nav-menu-lateral');
-
-        if (btn && nav) {
-          btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            nav.classList.toggle('active');
-          });
-
-          // Fecha o menu ao clicar em qualquer link das abas
-          nav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-              nav.classList.remove('active');
-            });
-          });
-
-          // Fecha o menu ao clicar fora dele
-          document.addEventListener('click', (e) => {
-            if (!nav.contains(e.target) && !btn.contains(e.target)) {
-              nav.classList.remove('active');
-            }
-          });
-        }
-      });
-    </script>
   </body>
 </html>
