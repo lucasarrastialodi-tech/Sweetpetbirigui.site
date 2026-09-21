@@ -1,6 +1,154 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+    <style>
+  /* ===== MENU LATERAL DIREITO ===== */
+  .menu-toggle {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    left: auto;
+    z-index: 1001;
+    width: 48px;
+    height: 48px;
+    background: #e91e63;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 14px rgba(233, 30, 99, 0.35);
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .menu-toggle:hover {
+    background: #c2185b;
+    transform: scale(1.05);
+  }
+
+  .menu-toggle .bar {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  .overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    left: auto;
+    width: 300px;
+    height: 100%;
+    background: #fff;
+    z-index: 1000;
+    box-shadow: -6px 0 25px rgba(0, 0, 0, 0.18);
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .sidebar.active {
+    right: 0;
+  }
+
+  .sidebar-header {
+    padding: 28px 24px 22px;
+    background: linear-gradient(135deg, #e91e63, #f06292);
+    color: white;
+    text-align: center;
+  }
+  .sidebar-header img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    margin-bottom: 10px;
+  }
+  .sidebar-header h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.6rem;
+    margin: 0;
+  }
+  .sidebar-header p {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-top: 4px;
+  }
+
+  .sidebar nav {
+    padding: 12px 0;
+    flex: 1;
+  }
+  .sidebar nav a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 24px;
+    color: #444;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    border-right: 4px solid transparent;
+  }
+  .sidebar nav a:hover {
+    background: #fce4ec;
+    color: #e91e63;
+    border-right-color: #e91e63;
+  }
+  .sidebar nav a .icon {
+    font-size: 1.25rem;
+    width: 26px;
+    text-align: center;
+  }
+
+  .sidebar-footer {
+    padding: 18px 24px;
+    border-top: 1px solid #eee;
+    font-size: 0.85rem;
+    color: #777;
+    text-align: center;
+  }
+
+  /* Esconde o menu antigo */
+  header nav {
+    display: none !important;
+  }
+  header .hamburger-menu {
+    display: none !important;
+  }
+</style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sweet Pet - Contato</title>
@@ -192,5 +340,72 @@
         }
       });
     </script>
+    <script>
+  const toggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  function openMenu() {
+    sidebar.classList.add('active');
+    overlay.classList.add('active');
+    toggle.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
+    toggle.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  toggle.addEventListener('click', () => {
+    if (sidebar.classList.contains('active')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  overlay.addEventListener('click', closeMenu);
+
+  document.querySelectorAll('.sidebar nav a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+</script>
   </body>
+  <!-- Botão do Menu Lateral (direita) -->
+<button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+</button>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Menu Lateral (lado direito) -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <img src="images/logo_sweet.png" alt="Logo Sweet Pet" />
+    <h2>Sweet Pet</h2>
+    <p>Banho & Tosa com amor</p>
+  </div>
+
+  <nav>
+    <a href="index.html"><span class="icon">🏠</span> Início</a>
+    <a href="servicos.html"><span class="icon">✂️</span> Serviços</a>
+    <a href="sobre.html"><span class="icon">👩‍🦰</span> Sobre</a>
+    <a href="processo.html"><span class="icon">🛁</span> Nosso Processo</a>
+    <a href="galeria.html"><span class="icon">📸</span> Galeria</a>
+    <a href="dicas.html"><span class="icon">💡</span> Dicas</a>
+    <a href="faq.html"><span class="icon">❓</span> Dúvidas Frequentes</a>
+    <a href="contato.html"><span class="icon">📞</span> Contato</a>
+    <a href="agendamento.html"><span class="icon">📅</span> Agendamento</a>
+  </nav>
+
+  <div class="sidebar-footer">
+    100% livre de gaiolas ❤️
+  </div>
+</aside>
 </html>
