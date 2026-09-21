@@ -10,6 +10,69 @@
     <link rel="stylesheet" href="style/style.css" />
     <link rel="icon" href="images/logo_sweet.png" type="image/png" />
     <script src="https://va.vercel-scripts.com/v1/script.js" defer></script>
+    <style>
+      /* --- Otimizações extras para telas de PC (Desktop) --- */
+      @media (min-width: 992px) {
+        body {
+          max-width: 1400px;
+          margin: 0 auto;
+          box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+        header .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .hero-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .servicos .cards {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+        }
+        .sobre .container {
+          max-width: 1100px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          gap: 50px;
+        }
+        .processo-container, .dicas-conteudo, .faq-container {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        /* Contato em duas colunas no PC */
+        .contato {
+          max-width: 1100px;
+          margin: 40px auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+          align-items: center;
+          background: #fff;
+          padding: 40px;
+          border-radius: 15px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .contato h2 {
+          grid-column: span 2;
+          text-align: center;
+        }
+        .contato iframe {
+          height: 100% !important;
+          min-height: 300px;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -288,27 +351,32 @@
       </div>
     </section>
 
+    <!-- Seção Contato Otimizada para PC -->
     <section id="contato" class="contato">
-      <h2>Contato</h2>
-      <p><strong>Telefone/WhatsApp:</strong> <a href="https://wa.me/5518991817474">(18) 99181-7474</a></p>
-      
-      <p class="contato-social">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-        <strong>Instagram:</strong> 
-        <a href="https://www.instagram.com/sweet.petbirigui" target="_blank" rel="noopener noreferrer">@sweet.petbirigui</a>
-      </p>
-      <p><strong>Endereço:</strong> R. José Scarpim, 331 - Jardim Recanto dos Passaros - Birigui - SP, 16201-150</p>
-      <p><strong>Horário:</strong> Terça a sexta das 07:20 às 16:00 | Sábado das 07:20 às 13:00</p>
+      <div class="contato-info">
+        <h2>Contato</h2>
+        <p><strong>Telefone/WhatsApp:</strong> <a href="https://wa.me/5518991817474">(18) 99181-7474</a></p>
+        
+        <p class="contato-social">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          <strong>Instagram:</strong> 
+          <a href="https://www.instagram.com/sweet.petbirigui" target="_blank" rel="noopener noreferrer">@sweet.petbirigui</a>
+        </p>
+        <p><strong>Endereço:</strong> R. José Scarpim, 331 - Jardim Recanto dos Passaros - Birigui - SP, 16201-150</p>
+        <p><strong>Horário:</strong> Terça a sexta das 07:20 às 16:00 | Sábado das 07:20 às 13:00</p>
+      </div>
 
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3714.4756312423985!2d-50.3540!3d-21.3100!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sR.+Jos%C3%A9+Scarpim%2C+331+-+Jardim+Recanto+dos+Passaros%2C+Birigui+-+SP%2C+16201-150!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
-        width="100%"
-        height="250"
-        style="border:0; border-radius: 10px;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
+      <div class="contato-mapa">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3714.4756312423985!2d-50.3540!3d-21.3100!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sR.+Jos%C3%A9+Scarpim%2C+331+-+Jardim+Recanto+dos+Passaros%2C+Birigui+-+SP%2C+16201-150!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+          width="100%"
+          height="250"
+          style="border:0; border-radius: 10px;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
     </section>
 
     <section class="crime-alert">
@@ -325,6 +393,7 @@
       <p class="enfase-footer">Um espaço seguro e 100% livre de gaiolas para o bem-estar do seu melhor amigo.</p>
       <p>© 2025 Sweet Pet - Banho & Tosa com amor 🐾</p>
     </footer>
+
     <div id="service-info-modal" class="service-modal">
       <div class="service-modal-content">
         <span class="service-close-button">×</span>
