@@ -73,7 +73,7 @@
         }
       }
 
-      /* --- Estrutura da Header e Menu Lateral --- */
+      /* --- Correção Definitiva do Menu Lateral e Botão --- */
       header .container {
         display: flex;
         justify-content: space-between;
@@ -82,7 +82,7 @@
       }
 
       .hamburger-menu {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         justify-content: space-between;
         width: 32px;
@@ -91,7 +91,7 @@
         border: none;
         cursor: pointer;
         padding: 0;
-        z-index: 1001;
+        z-index: 1002;
       }
 
       .hamburger-menu .bar {
@@ -102,42 +102,42 @@
         transition: 0.3s ease;
       }
 
-      /* Painel Lateral (Menu) */
-      header nav {
-        position: fixed;
-        top: 0;
-        right: -320px; /* Inicialmente fora da tela */
-        width: 280px;
-        height: 100vh;
-        background-color: #ffffff;
-        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.15);
-        display: flex;
-        flex-direction: column;
-        padding: 90px 25px 30px 25px;
-        gap: 15px;
-        transition: right 0.35s cubic-bezier(0.77, 0, 0.175, 1);
-        z-index: 1000;
-        overflow-y: auto;
+      /* Menu lateral forçado para garantir interatividade */
+      header nav#nav-menu-lateral {
+        position: fixed !important;
+        top: 0 !important;
+        right: -320px !important;
+        width: 280px !important;
+        height: 100vh !important;
+        background-color: #ffffff !important;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.15) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 90px 25px 30px 25px !important;
+        gap: 12px !important;
+        transition: right 0.35s cubic-bezier(0.77, 0, 0.175, 1) !important;
+        z-index: 1001 !important;
+        overflow-y: auto !important;
       }
 
-      /* Quando a classe 'active' for adicionada via clique, ele desliza para dentro */
-      header nav.active {
-        right: 0;
+      header nav#nav-menu-lateral.active {
+        right: 0 !important;
       }
 
-      header nav a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 500;
-        font-size: 1.1rem;
-        padding: 12px 15px;
-        border-radius: 8px;
-        transition: background 0.2s, color 0.2s;
+      header nav#nav-menu-lateral a {
+        text-decoration: none !important;
+        color: #333 !important;
+        font-weight: 500 !important;
+        font-size: 1.1rem !important;
+        padding: 10px 15px !important;
+        border-radius: 8px !important;
+        display: block !important;
+        transition: background 0.2s, color 0.2s !important;
       }
 
-      header nav a:hover {
-        background-color: #fff0f3;
-        color: #ff6b81;
+      header nav#nav-menu-lateral a:hover {
+        background-color: #fff0f3 !important;
+        color: #ff6b81 !important;
       }
     </style>
   </head>
@@ -152,8 +152,8 @@
           </a>
         </h1>
         
-        <!-- Menu Lateral (Abas do site) -->
-        <nav>
+        <!-- Menu Lateral com todas as 9 abas originais -->
+        <nav id="nav-menu-lateral">
           <a href="index.html">Início</a>
           <a href="servicos.html">Serviços</a>
           <a href="sobre.html">Sobre</a>
@@ -166,7 +166,7 @@
         </nav>
 
         <!-- Botão dos 3 risquinhos -->
-        <button class="hamburger-menu" aria-label="Abrir menu">
+        <button class="hamburger-menu" id="hamburger-btn" aria-label="Abrir menu">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
@@ -481,28 +481,28 @@
     
     <script src="script/script.js"></script>
     <script>
-      // Script de ativação do menu hambúrguer garantido
+      // Script embutido ativando perfeitamente o menu hambúrguer por cima de qualquer regra externa
       document.addEventListener('DOMContentLoaded', () => {
-        const hamburgerBtn = document.querySelector('.hamburger-menu');
-        const navMenu = document.querySelector('header nav');
+        const btn = document.getElementById('hamburger-btn');
+        const nav = document.getElementById('nav-menu-lateral');
 
-        if (hamburgerBtn && navMenu) {
-          hamburgerBtn.addEventListener('click', (event) => {
-            event.stopPropagation();
-            navMenu.classList.toggle('active');
+        if (btn && nav) {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nav.classList.toggle('active');
           });
 
-          // Fecha o menu ao clicar em qualquer link de aba interna
-          navMenu.querySelectorAll('a').forEach(link => {
+          // Fecha o menu ao clicar em qualquer link das abas
+          nav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-              navMenu.classList.remove('active');
+              nav.classList.remove('active');
             });
           });
 
-          // Fecha o menu ao clicar fora da barra lateral
-          document.addEventListener('click', (event) => {
-            if (!navMenu.contains(event.target) && !hamburgerBtn.contains(event.target)) {
-              navMenu.classList.remove('active');
+          // Fecha o menu ao clicar fora dele
+          document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !btn.contains(e.target)) {
+              nav.classList.remove('active');
             }
           });
         }
